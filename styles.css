@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+}
+.tabuleiro-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+    height: 500px;
+    margin: auto;
+}
+.botoes {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 10px;
+    size: 100px;
+}
+
+button {
+    padding: 10px;
+    border-radius: 1rem;
+    margin: 20px 20px;   
+}
+
+button:hover {
+    background-color: rgb(250, 215, 215);
+}
+
+.celula {
+    font-size: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 33.3%;
+    height: 33.3%;
+    border: 1px solid red;
+}
