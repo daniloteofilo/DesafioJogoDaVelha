@@ -44,7 +44,8 @@
 let squares = document.getElementsByClassName('celula')
 let changeButton = document.getElementById('change')
 let currentPlayer = 'X'
-let arrayVazia = [[],[],[],[],[],[],[],[],[]]
+let currentGame = ['','','','','','','','','']
+let resultado = document.getElementById('resultado')
 
 function changePlayer () {
     if (currentPlayer === 'X') {
@@ -53,6 +54,8 @@ function changePlayer () {
         currentPlayer = 'X'
     }    
 }
+
+
 
 // changeButton.addEventListener('click', changePlayer)
 
@@ -65,13 +68,45 @@ for (let i = 0; i < squares.length; i++) {
     square.addEventListener('click', function () {
         if(square.innerHTML === '') {
             square.innerHTML = currentPlayer
-            arrayVazia[i].push(currentPlayer)
+            currentGame[i] = currentPlayer
             changePlayer()
         }
-        if(arrayVazia[0][0] === arrayVazia[1][0] && arrayVazia[1][0] === arrayVazia[2][0] && arrayVazia[0][0]){
-            alert("Ganhou")
+        if(currentGame[0] === currentGame[1] && currentGame[1] === currentGame[2] && currentGame[0]){
+            changePlayer()
+            resultado.innerHTML = (currentPlayer + " Ganhou")
         }
-        console.log(arrayVazia)
+        else if(currentGame[3] === currentGame[4] && currentGame[4] === currentGame[5] && currentGame[3]){
+            changePlayer()
+            resultado.innerHTML = (currentPlayer + " Ganhou")
+        }
+        else if(currentGame[6] === currentGame[7] && currentGame[7] === currentGame[8] && currentGame[6]){
+            changePlayer()
+            resultado.innerHTML = (currentPlayer + " Ganhou")
+        }
+        else if(currentGame[0] === currentGame[3] && currentGame[3] === currentGame[6] && currentGame[0]){
+            changePlayer()
+            resultado.innerHTML = (currentPlayer + " Ganhou")
+        }
+        else if(currentGame[1] === currentGame[4] && currentGame[4] === currentGame[7] && currentGame[1]){
+            changePlayer()
+            resultado.innerHTML = (currentPlayer + " Ganhou")
+        }
+        else if(currentGame[2] === currentGame[5] && currentGame[5] === currentGame[8] && currentGame[2]){
+            changePlayer()
+            resultado.innerHTML = (currentPlayer + " Ganhou")
+        }
+        else if(currentGame[0] === currentGame[4] && currentGame[4] === currentGame[8] && currentGame[0]){
+            changePlayer()
+            resultado.innerHTML = (currentPlayer + " Ganhou")
+        }
+
+        else if(currentGame[2] === currentGame[4] && currentGame[4] === currentGame[6] && currentGame[2]){
+            changePlayer()
+            resultado.innerHTML = (currentPlayer + " Ganhou")
+        }
+
+
+        console.log(currentGame)
     })    
 }
 

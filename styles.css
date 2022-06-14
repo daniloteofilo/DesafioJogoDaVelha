@@ -40,3 +40,8 @@ button:hover {
     height: 33.3%;
     border: 1px solid red;
 }
+
+#resultado {
+    font-size: 3rem;
+    text-align: center;
+}
