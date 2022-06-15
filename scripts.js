@@ -81,6 +81,8 @@ for (let i = 0; i < squares.length; i++) {
 }
 
 function vencedor() {
+    drawGame()
+
     if(currentGame[0] === currentGame[1] && currentGame[1] === currentGame[2] && currentGame[0]){
         changePlayer()
         atualizaPlacar()
@@ -130,7 +132,7 @@ function vencedor() {
         containerVisible()
     }
 
-    drawGame()
+    
 }
 
 confirmButton.addEventListener('click', function () {
