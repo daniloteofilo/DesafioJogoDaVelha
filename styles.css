@@ -1,10 +1,13 @@
-* {
+* { transition: 0.5s;
     margin: 0;
     box-sizing: border-box;
 }
 
 body {
+    height: 100%;
     width: 100%;
+    justify-content: center;
+    align-items: center;
 }
 .tabuleiro-container {
     display: flex;
@@ -12,7 +15,29 @@ body {
     width: 500px;
     height: 500px;
     margin: auto;
+    box-shadow: 1px 1px 5px 5px gray;
 }
+
+.celula {
+    font-size: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 33.3%;
+    height: 33.3%;
+    border: 1px solid black;
+}
+
+.celula:hover {
+    background-color: rgba(0, 255, 255, 0.284);
+    box-shadow: 1px 1px 5px 5px goldenrod;
+}
+
+.celula:focus {
+    background-color: gray;
+}
+
+
 .botoes {
     display: flex;
     justify-content: center;
@@ -31,17 +56,18 @@ button:hover {
     background-color: rgb(250, 215, 215);
 }
 
-.celula {
-    font-size: 8rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 33.3%;
-    height: 33.3%;
-    border: 1px solid red;
-}
-
 #resultado {
     font-size: 3rem;
     text-align: center;
+}
+
+.placar-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.placar {
+    font-size: 2rem;
 }
