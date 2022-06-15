@@ -42,9 +42,11 @@
 // ======================================================================================
 
 let squares = document.getElementsByClassName('celula')
-let changeButton = document.getElementById('change')
+// let changeButton = document.getElementById('change')
+let confirmButton = document.getElementById('confirm-reset')
 let currentPlayer = 'X'
 let currentGame = ['','','','','','','','','']
+let turnGame = 0
 let resultado = document.getElementById('resultado')
 let placarX = document.getElementsByClassName('placarX')[0]
 let placarO = document.getElementsByClassName('placarO')[0]
@@ -73,6 +75,7 @@ function newGame() {
     }
     
     currentGame = ['','','','','','','','','']
+    turnGame = 0
 }
 
 function atualizaPlacar() {
@@ -100,20 +103,24 @@ for (let i = 0; i < squares.length; i++) {
             changePlayer()
         }
         vencedor()
+        // square.innerHTML = currentPlayer
+        playAgain()
         console.log(tabuleiroNovo)
         console.log(currentGame)
-    })    
+
+        turnGame++
+        
+    })   
 }
+
 
 function vencedor() {
     if(currentGame[0] === currentGame[1] && currentGame[1] === currentGame[2] && currentGame[0]){
         changePlayer()
         atualizaPlacar()
         resultado.innerHTML = (currentPlayer + " Ganhou")
+        newGame
 
-
-
-        newGame()
     }
     else if(currentGame[3] === currentGame[4] && currentGame[4] === currentGame[5] && currentGame[3]){
         changePlayer()
@@ -158,4 +165,14 @@ function vencedor() {
         resultado.innerHTML = (currentPlayer + " Ganhou")
         newGame()
     }
+
+    if(turnGame === 8){
+        alert('Deu empate, o placar não será alterado e o jogo vai reiniciar')
+        newGame()
+    }
 }
+
+
+confirmButton.addEventListener('click', function () {
+    newGame()
+})
