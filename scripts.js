@@ -1,48 +1,6 @@
-// // let celula1 = document.getElementsByClassName("celula")[0]
-
-// // celula1.addEventListener("click", function (){
-// //     if(celula1.innerHTML === "X"){
-// //         celula1.innerHTML = "O"
-// //     }
-// //     else {
-// //         celula1.innerHTML = "X"
-// //     }
-// // })
-
-// let celulas = document.getElementsByClassName("celula")
-
-// let jogador1 = document.getElementById("jogador1")
-
-// let jogador2 = document.getElementById("jogador2")
-
-// let currentPlayer = 'X'
-
-// function changePlayer () {
-//     if (currentPlayer === 'X') {
-//         currentPlayer = 'O'
-//     } else {
-//         currentPlayer = 'X'
-//     }    
-// }
-
-
-// for (let i = 0; i < celulas.length; i++) {
-//     let cadacelula = celulas[i];
-    
-//     cadacelula.addEventListener("click", function() {
-//         if(cadacelula.innerHTML === "X"){
-//             cadacelula.innerHTML = "O"
-//         }   
-//         else {
-//             cadacelula.innerHTML = "X"
-//         }
-//     })
-// }
-
-// ======================================================================================
-
 let squares = document.getElementsByClassName('celula')
-// let changeButton = document.getElementById('change')
+let containerMessage = document.getElementsByClassName('result-box')[0]
+let messageContent = document.getElementsByClassName('message-result-box')[0]
 let confirmButton = document.getElementById('confirm-reset')
 let currentPlayer = 'X'
 let currentGame = ['','','','','','','','','']
@@ -62,22 +20,6 @@ function changePlayer() {
     }    
 }
 
-function newGame() {
-    if (resultado.innerHTML === 'X Ganhou') {
-        alert(`Jogador  '${currentPlayer}' ganhou e agora possui ${placarAtualX} na pontuação total!`)
-    }
-    else if (resultado.innerHTML === 'O Ganhou') {
-        alert(`Jogador  '${currentPlayer}' ganhou e agora possui ${placarAtualO} na pontuação total!`)
-    }
-    for (let i = 0; i < squares.length; i++) {
-        const box = squares[i];
-        box.innerHTML = ''
-    }
-    
-    currentGame = ['','','','','','','','','']
-    turnGame = 0
-}
-
 function atualizaPlacar() {
     if(currentPlayer==='X'){
         placarAtualX = placarAtualX + 1
@@ -89,90 +31,109 @@ function atualizaPlacar() {
     }
 }
 
+function messageContainer() {
+    resultado.innerHTML = (currentPlayer + " Ganhou a ultima rodada")
+    if (resultado.innerHTML === 'X Ganhou a ultima rodada') {
+        messageContent.innerHTML = `Jogador  '${currentPlayer}' ganhou e agora possui ${placarAtualX} na pontuação total!`
+    }
+    else if (resultado.innerHTML === 'O Ganhou a ultima rodada') {
+        messageContent.innerHTML = `Jogador  '${currentPlayer}' ganhou e agora possui ${placarAtualO} na pontuação total!`
+    }
+}
 
-// changeButton.addEventListener('click', changePlayer)
+function newGame() {
+    for (let i = 0; i < squares.length; i++) {
+        const box = squares[i];
+        box.innerHTML = ''
+    }
+    currentGame = ['','','','','','','','','']
+    turnGame = 0
+}
+
+function containerVisible() {
+    containerMessage.style.display = "flex";
+}
+
+function drawGame() {
+    if(turnGame === 9){
+        resultado.innerHTML = 'EMPATE'
+        if (resultado.innerHTML === 'EMPATE') {
+            messageContent.innerHTML = `EMPATOU! VOCÊS SERIAM OS DEUSES DO JOGO DA VELHA?`
+        }
+        containerVisible()
+    }
+}
 
 for (let i = 0; i < squares.length; i++) {
     let square = squares[i]
-   
 
     square.addEventListener('click', function () {
         if(square.innerHTML === '') {
             square.innerHTML = currentPlayer
+            turnGame++
             currentGame[i] = currentPlayer
             changePlayer()
         }
         vencedor()
-        // square.innerHTML = currentPlayer
-        playAgain()
         console.log(tabuleiroNovo)
         console.log(currentGame)
-
-        turnGame++
-        
     })   
 }
-
 
 function vencedor() {
     if(currentGame[0] === currentGame[1] && currentGame[1] === currentGame[2] && currentGame[0]){
         changePlayer()
         atualizaPlacar()
-        resultado.innerHTML = (currentPlayer + " Ganhou")
-        newGame
-
+        messageContainer()
+        containerVisible()
     }
     else if(currentGame[3] === currentGame[4] && currentGame[4] === currentGame[5] && currentGame[3]){
         changePlayer()
         atualizaPlacar()
-        resultado.innerHTML = (currentPlayer + " Ganhou")
-        newGame()
+        messageContainer()
+        containerVisible()
     }
     else if(currentGame[6] === currentGame[7] && currentGame[7] === currentGame[8] && currentGame[6]){
         changePlayer()
         atualizaPlacar()
-        resultado.innerHTML = (currentPlayer + " Ganhou")
-        newGame()
+        messageContainer()
+        containerVisible()
     }
     else if(currentGame[0] === currentGame[3] && currentGame[3] === currentGame[6] && currentGame[0]){
         changePlayer()
         atualizaPlacar()
-        resultado.innerHTML = (currentPlayer + " Ganhou")
-        newGame()
+        messageContainer()
+        containerVisible()
     }
     else if(currentGame[1] === currentGame[4] && currentGame[4] === currentGame[7] && currentGame[1]){
         changePlayer()
         atualizaPlacar()
-        resultado.innerHTML = (currentPlayer + " Ganhou")
-        newGame()
+        messageContainer()
+        containerVisible()
     }
     else if(currentGame[2] === currentGame[5] && currentGame[5] === currentGame[8] && currentGame[2]){
         changePlayer()
         atualizaPlacar()
-        resultado.innerHTML = (currentPlayer + " Ganhou")
-        newGame()
+        messageContainer()
+        containerVisible()
     }
     else if(currentGame[0] === currentGame[4] && currentGame[4] === currentGame[8] && currentGame[0]){
         changePlayer()
         atualizaPlacar()
-        resultado.innerHTML = (currentPlayer + " Ganhou")
-        newGame()
+        messageContainer()
+        containerVisible()
     }
-
     else if(currentGame[2] === currentGame[4] && currentGame[4] === currentGame[6] && currentGame[2]){
         changePlayer()
         atualizaPlacar()
-        resultado.innerHTML = (currentPlayer + " Ganhou")
-        newGame()
+        messageContainer()
+        containerVisible()
     }
 
-    if(turnGame === 8){
-        alert('Deu empate, o placar não será alterado e o jogo vai reiniciar')
-        newGame()
-    }
+    drawGame()
 }
-
 
 confirmButton.addEventListener('click', function () {
     newGame()
+    containerMessage.style.display = "none";
 })
