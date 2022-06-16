@@ -1,16 +1,15 @@
-let squares = document.getElementsByClassName('celula')
+let squares = document.getElementsByClassName('square')
 let containerMessage = document.getElementsByClassName('result-box')[0]
 let messageContent = document.getElementsByClassName('message-result-box')[0]
 let confirmButton = document.getElementById('confirm-reset')
 let currentPlayer = 'X'
 let currentGame = ['','','','','','','','','']
 let turnGame = 0
-let resultado = document.getElementById('resultado')
-let placarX = document.getElementsByClassName('placarX')[0]
-let placarO = document.getElementsByClassName('placarO')[0]
-let tabuleiroNovo = document.getElementById('tabuleiro-container')
-let placarAtualX = 0
-let placarAtualO = 0
+let result = document.getElementById('result')
+let scoreboardX = document.getElementsByClassName('scoreboardX')[0]
+let scoreboardO = document.getElementsByClassName('scoreboardO')[0]
+let currentScoreboardX = 0
+let currentScoreboardO = 0
 
 function changePlayer() {
     if (currentPlayer === 'X') {
@@ -20,24 +19,24 @@ function changePlayer() {
     }    
 }
 
-function atualizaPlacar() {
+function updateScoreboard() {
     if(currentPlayer==='X'){
-        placarAtualX = placarAtualX + 1
-        placarX.innerHTML = placarAtualX
+        currentScoreboardX = currentScoreboardX + 1
+        scoreboardX.innerHTML = currentScoreboardX
     }
     else if(currentPlayer==='O'){
-        placarAtualO = placarAtualO + 1
-        placarO.innerHTML = placarAtualO
+        currentScoreboardO = currentScoreboardO + 1
+        scoreboardO.innerHTML = currentScoreboardO
     }
 }
 
 function messageContainer() {
-    resultado.innerHTML = (currentPlayer + " Ganhou a ultima rodada")
-    if (resultado.innerHTML === 'X Ganhou a ultima rodada') {
-        messageContent.innerHTML = `Jogador  '${currentPlayer}' ganhou e agora possui ${placarAtualX} na pontuação total!`
+    result.innerHTML = (currentPlayer + " Ganhou a ultima rodada")
+    if (result.innerHTML === 'X Ganhou a ultima rodada') {
+        messageContent.innerHTML = `Jogador  '${currentPlayer}' ganhou e agora possui ${currentScoreboardX} na pontuação total!`
     }
-    else if (resultado.innerHTML === 'O Ganhou a ultima rodada') {
-        messageContent.innerHTML = `Jogador  '${currentPlayer}' ganhou e agora possui ${placarAtualO} na pontuação total!`
+    else if (result.innerHTML === 'O Ganhou a ultima rodada') {
+        messageContent.innerHTML = `Jogador  '${currentPlayer}' ganhou e agora possui ${currentScoreboardO} na pontuação total!`
     }
 }
 
@@ -56,8 +55,8 @@ function containerVisible() {
 
 function drawGame() {
     if(turnGame === 9){
-        resultado.innerHTML = 'EMPATE'
-        if (resultado.innerHTML === 'EMPATE') {
+        result.innerHTML = 'EMPATE'
+        if (result.innerHTML === 'EMPATE') {
             messageContent.innerHTML = `EMPATOU! VOCÊS SERIAM OS DEUSES DO JOGO DA VELHA?`
         }
         containerVisible()
@@ -74,60 +73,59 @@ for (let i = 0; i < squares.length; i++) {
             currentGame[i] = currentPlayer
             changePlayer()
         }
-        vencedor()
-        console.log(tabuleiroNovo)
+        setWinner()
         console.log(currentGame)
     })   
 }
 
-function vencedor() {
+function setWinner() {
     drawGame()
 
     if(currentGame[0] === currentGame[1] && currentGame[1] === currentGame[2] && currentGame[0]){
         changePlayer()
-        atualizaPlacar()
+        updateScoreboard()
         messageContainer()
         containerVisible()
     }
     else if(currentGame[3] === currentGame[4] && currentGame[4] === currentGame[5] && currentGame[3]){
         changePlayer()
-        atualizaPlacar()
+        updateScoreboard()
         messageContainer()
         containerVisible()
     }
     else if(currentGame[6] === currentGame[7] && currentGame[7] === currentGame[8] && currentGame[6]){
         changePlayer()
-        atualizaPlacar()
+        updateScoreboard()
         messageContainer()
         containerVisible()
     }
     else if(currentGame[0] === currentGame[3] && currentGame[3] === currentGame[6] && currentGame[0]){
         changePlayer()
-        atualizaPlacar()
+        updateScoreboard()
         messageContainer()
         containerVisible()
     }
     else if(currentGame[1] === currentGame[4] && currentGame[4] === currentGame[7] && currentGame[1]){
         changePlayer()
-        atualizaPlacar()
+        updateScoreboard()
         messageContainer()
         containerVisible()
     }
     else if(currentGame[2] === currentGame[5] && currentGame[5] === currentGame[8] && currentGame[2]){
         changePlayer()
-        atualizaPlacar()
+        updateScoreboard()
         messageContainer()
         containerVisible()
     }
     else if(currentGame[0] === currentGame[4] && currentGame[4] === currentGame[8] && currentGame[0]){
         changePlayer()
-        atualizaPlacar()
+        updateScoreboard()
         messageContainer()
         containerVisible()
     }
     else if(currentGame[2] === currentGame[4] && currentGame[4] === currentGame[6] && currentGame[2]){
         changePlayer()
-        atualizaPlacar()
+        updateScoreboard()
         messageContainer()
         containerVisible()
     }
