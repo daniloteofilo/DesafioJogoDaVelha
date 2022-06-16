@@ -23,7 +23,7 @@ body {
     align-items: center;
     background-color: rgba(11, 39, 63, 0.873);
     color: #ff3366c6;
-    animation: neon 3s alternate infinite ease-in-out;
+    animation: neon 2s alternate infinite ease-in-out;
     --cor-neon: #ff3366;
 }
 
@@ -40,8 +40,6 @@ body {
 }
 
 .square {
-    
-    /* position: relative; */
     text-decoration: none;
     font-size: 3rem;
     display: flex;
@@ -56,6 +54,7 @@ body {
 .square:hover {
     background-color: rgba(0, 255, 255, 0.284);
     box-shadow: 1px 1px 5px 5px goldenrod;
+    cursor: pointer;
 }
 
 .result-box {
@@ -101,7 +100,6 @@ button:hover {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 0px;
 }
 
 .scoreboard {
