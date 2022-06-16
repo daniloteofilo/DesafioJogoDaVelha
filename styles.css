@@ -48,7 +48,7 @@ body {
     height: 300px;
     margin: auto;
     border-radius: 1rem;
-    background-image: url(/images/tabuleiro.png);
+    background-image: url(images/tabuleiro.png);
 }
 
 .square {
