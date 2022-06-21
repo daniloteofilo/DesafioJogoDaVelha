@@ -49,7 +49,7 @@ function newGame() {
     turnGame = 0
 }
 
-function showMessageBoxta() {
+function showMessageBox() {
     containerMessage.style.display = "flex";
 }
 
@@ -59,7 +59,7 @@ function drawGame() {
         if (result.innerHTML === 'EMPATE') {
             messageContent.innerHTML = `EMPATOU! VOCÊS SERIAM OS DEUSES DO JOGO DA VELHA?`
         }
-        showMessageBoxta()
+        showMessageBox()
     }
 }
 
@@ -85,49 +85,49 @@ function setWinner() {
         changePlayer()
         updateScoreboard()
         messageContainer()
-        showMessageBoxta()
+        showMessageBox()
     }
     else if(currentGame[3] === currentGame[4] && currentGame[4] === currentGame[5] && currentGame[3]){
         changePlayer()
         updateScoreboard()
         messageContainer()
-        showMessageBoxta()
+        showMessageBox()
     }
     else if(currentGame[6] === currentGame[7] && currentGame[7] === currentGame[8] && currentGame[6]){
         changePlayer()
         updateScoreboard()
         messageContainer()
-        showMessageBoxta()
+        showMessageBox()
     }
     else if(currentGame[0] === currentGame[3] && currentGame[3] === currentGame[6] && currentGame[0]){
         changePlayer()
         updateScoreboard()
         messageContainer()
-        showMessageBoxta()
+        showMessageBox()
     }
     else if(currentGame[1] === currentGame[4] && currentGame[4] === currentGame[7] && currentGame[1]){
         changePlayer()
         updateScoreboard()
         messageContainer()
-        showMessageBoxta()
+        showMessageBox()
     }
     else if(currentGame[2] === currentGame[5] && currentGame[5] === currentGame[8] && currentGame[2]){
         changePlayer()
         updateScoreboard()
         messageContainer()
-        showMessageBoxta()
+        showMessageBox()
     }
     else if(currentGame[0] === currentGame[4] && currentGame[4] === currentGame[8] && currentGame[0]){
         changePlayer()
         updateScoreboard()
         messageContainer()
-        showMessageBoxta()
+        showMessageBox()
     }
     else if(currentGame[2] === currentGame[4] && currentGame[4] === currentGame[6] && currentGame[2]){
         changePlayer()
         updateScoreboard()
         messageContainer()
-        showMessageBoxta()
+        showMessageBox()
     }
 
     
