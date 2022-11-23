@@ -27,7 +27,7 @@ body {
     color: white;
     background-image: url(images/background2.gif);
     background-repeat: no-repeat;
-    background-size: 100% 140%;
+    background-size: 100vw 100vh;
 }
 
 .border-game {
